@@ -44,6 +44,22 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
         </dependency>
+        <!-- pagehelper
+        在springBoot中使用分页插件pagehelper之后，在前端将数据拿出来的时候发现分页插件并没有起到作用？
+        检查之后发现在springBoot中如果需要使用分页插件需要添加pagehelper-spring-boot-starter的jar包才可生效。springBoot版本：2.7.0
+        ————————————————
+        原文链接：https://blog.csdn.net/weixin_45677046/article/details/125562184
+        -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.6</version>
+        </dependency>
     </dependencies>
 
     <build>
