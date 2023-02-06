@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.inwe.blog.dao.InformalEssayMapper;
 import com.inwe.blog.model.Essay;
+import com.inwe.blog.utlis.Util;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +20,8 @@ class BlogApplicationTests {
 
     @Autowired
     private InformalEssayMapper informalEssayMapper;
+
+
 
     @Test
     void contextLoads() {
@@ -34,11 +37,11 @@ class BlogApplicationTests {
 //        stringIntegerMap.put("page",1);
 //        stringIntegerMap.put("pageSize",2);
 //        informalEssayMapper.getEssayList(stringIntegerMap).forEach(System.out::println);
-        Page<Object> page = PageHelper.startPage(1, 2);
-        List<Essay> essays = informalEssayMapper.selectList(null);
-        PageInfo<Essay> essayPageInfo = new PageInfo<>(essays);
-        System.out.println(essayPageInfo);
-
+//        Page<Object> page = PageHelper.startPage(1, 2);
+//        List<Essay> essays = informalEssayMapper.selectList(null);
+//        PageInfo<Essay> essayPageInfo = new PageInfo<>(essays);
+//        System.out.println(essayPageInfo);
+        System.out.println(Util.getUuid());
 
     }
 

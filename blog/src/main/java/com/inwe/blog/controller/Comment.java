@@ -3,6 +3,7 @@ package com.inwe.blog.controller;
 import com.inwe.blog.dao.CommentMapper;
 import com.inwe.blog.model.Essay;
 import com.inwe.blog.utlis.R;
+import com.inwe.blog.utlis.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,11 +32,7 @@ public class Comment {
         commentTemp.setBrowserIcon(comment.getBrowserIcon());
         commentTemp.setCreateTime(temp);
         commentTemp.setOperatingSystem(comment.getOperatingSystem());
-        commentTemp.setReplyId(0);
-//        essayTemp.setCreateTime(temp);
-//        essayTemp.setUpdateTime(temp);
-//        essayTemp.setSource(essay.getSource());
-//        essayTemp.setText(essay.getText());
+        commentTemp.setCommentId(Util.getUuid());
         commentMapper.insert(commentTemp);
         return  R.ok();
     }

@@ -10,9 +10,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@TableName("tb_comment")
+@TableName("tb_comment_main")
 public class Comment {
-    private int commentId;
+    private String commentId;
     private String commentName;
     private  String commentEmail;
     private  String blogUrl;
@@ -22,5 +22,4 @@ public class Comment {
     private  String browser;
     private String browserIcon;
     private  String path;
-    private int replyId;
 }
