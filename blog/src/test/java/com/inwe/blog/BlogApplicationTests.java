@@ -1,10 +1,14 @@
 package com.inwe.blog;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.inwe.blog.dao.CommentMapper;
 import com.inwe.blog.dao.InformalEssayMapper;
+import com.inwe.blog.model.Comment;
 import com.inwe.blog.model.Essay;
 import com.inwe.blog.utlis.Util;
 import org.junit.jupiter.api.Test;
@@ -21,6 +25,8 @@ class BlogApplicationTests {
     @Autowired
     private InformalEssayMapper informalEssayMapper;
 
+    @Autowired
+    CommentMapper commentMapper;
 
 
     @Test
@@ -41,7 +47,8 @@ class BlogApplicationTests {
 //        List<Essay> essays = informalEssayMapper.selectList(null);
 //        PageInfo<Essay> essayPageInfo = new PageInfo<>(essays);
 //        System.out.println(essayPageInfo);
-        System.out.println(Util.getUuid());
+
+        System.out.println(commentMapper.selectList(Wrappers.<Comment>query().orderByDesc("create_time")));
 
     }
 

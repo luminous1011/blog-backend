@@ -10,13 +10,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@TableName("tb_comment_main")
+@TableName("tb_comment")
 public class Comment {
-    private String commentId;
-    private String commentName;
-    private  String commentEmail;
-    private  String blogUrl;
-    private  String comments;
+    private String cid;
+    private String fromUid;
+    private String toUid;
+    private String replyType;
+    private String replyId;
+    private  String content;
     private  long createTime;
     private String operatingSystem;
     private  String browser;
