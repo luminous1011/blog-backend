@@ -48,8 +48,9 @@ class BlogApplicationTests {
 //        PageInfo<Essay> essayPageInfo = new PageInfo<>(essays);
 //        System.out.println(essayPageInfo);
 
-        System.out.println(commentMapper.selectList(Wrappers.<Comment>query().orderByDesc("create_time")));
+//        System.out.println(commentMapper.selectList(Wrappers.<Comment>query().orderByDesc("create_time")));
 
+        System.out.println(commentMapper.getCommentList("comment"));
     }
 
 }

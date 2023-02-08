@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface CommentMapper extends BaseMapper<Comment> {
-    @Select("SELECT cid,from_uid,content,create_time,browser_icon,operating_system,path,browser,to_uid,reply_type,reply_id" +
-            "from tb_comment order by create_time desc")
-    public List<Comment> getCommentList();
+    @Select("SELECT cid,from_uid,content,create_time,browser_icon,operating_system,path,browser,to_uid,reply_type,reply_id from tb_comment where reply_type=#{reply_type} order by create_time desc ")
+    public List<Comment> getCommentList(String reply_type);
+
 }
