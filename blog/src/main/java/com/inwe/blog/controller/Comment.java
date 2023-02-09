@@ -24,49 +24,22 @@ public class Comment {
     @PostMapping ("addComment")
     public R addComment(@RequestBody Map<String,String> map){
         String uid = insertUser(map);
-        long temp = new Date().getTime();
-        com.inwe.blog.model.Comment comment=new com.inwe.blog.model.Comment();
-        comment.setCid(Util.getUuid());
-        comment.setFromUid(uid);
-        comment.setReplyType(map.get("replyType"));
-        comment.setFromCid(map.get("fromCid"));
-        comment.setReplyId(map.get("replyId"));
-        comment.setOperatingSystem(map.get("system"));
-        comment.setCreateTime(temp);
-        comment.setBrowser(map.get("browser"));
-        comment.setBrowserIcon(map.get("browserIcon"));
-        comment.setContent(map.get("comments"));
-        comment.setPath(map.get("path"));
-        commentMapper.insert(comment);
+        insertComment(uid,map);
         return  R.ok();
     }
     @PostMapping("replyComment")
     public R replyComment(@RequestBody Map<String,String> map){
         String uid = insertUser(map);
-        long temp = new Date().getTime();
-        com.inwe.blog.model.Comment comment=new com.inwe.blog.model.Comment();
-        comment.setCid(Util.getUuid());
-        comment.setFromUid(uid);
-        comment.setReplyType(map.get("replyType"));
-        comment.setFromCid(map.get("fromCid"));
-        comment.setReplyId(map.get("replyId"));
-        comment.setOperatingSystem(map.get("system"));
-        comment.setCreateTime(temp);
-        comment.setBrowser(map.get("browser"));
-        comment.setBrowserIcon(map.get("browserIcon"));
-        comment.setContent(map.get("comments"));
-        comment.setPath(map.get("path"));
-        commentMapper.insert(comment);
+        insertComment(uid,map);
         return R.ok();
     }
     @GetMapping ("getCommentsList")
-    public R getCommentsList(String replyType){
-        List<com.inwe.blog.model.Comment> data = getCommentList("comment");
+    public R getCommentsList(String path){
+        List<com.inwe.blog.model.Comment> data = getCommentList("comment",path);
         return R.ok().put("data",data);
     }
     public List<com.inwe.blog.model.Comment> getCommentReplyList(com.inwe.blog.model.Comment commentVar){
         HashMap<String, String> map = new HashMap<>();
-        System.out.println(commentVar.getCid());
         map.put("from_cid",commentVar.getCid());
         map.put("reply_type","reply");
         List<com.inwe.blog.model.Comment> comments = commentMapper.getReplyList(map);
@@ -76,8 +49,9 @@ public class Comment {
         });
         return comments;
     }
-    public List<com.inwe.blog.model.Comment> getCommentList(String replyType){
-        List<com.inwe.blog.model.Comment> data = commentMapper.getCommentList(replyType);
+
+    public List<com.inwe.blog.model.Comment> getCommentList(String replyType,String path){
+        List<com.inwe.blog.model.Comment> data = commentMapper.getCommentList(replyType,path);
         data.forEach((com.inwe.blog.model.Comment comment)->{
             comment.setFromUser(userMapper.selectById(comment.getFromUid()));
             comment.setChildren(getCommentReplyList(comment));
@@ -120,5 +94,22 @@ public class Comment {
         }else{
             return users.get(0).getUid();
         }
+    }
+
+    public void insertComment(String uid,Map<String,String> map){
+        long temp = new Date().getTime();
+        com.inwe.blog.model.Comment comment=new com.inwe.blog.model.Comment();
+        comment.setCid(Util.getUuid());
+        comment.setFromUid(uid);
+        comment.setReplyType(map.get("replyType"));
+        comment.setFromCid(map.get("fromCid"));
+        comment.setReplyId(map.get("replyId"));
+        comment.setOperatingSystem(map.get("system"));
+        comment.setCreateTime(temp);
+        comment.setBrowser(map.get("browser"));
+        comment.setBrowserIcon(map.get("browserIcon"));
+        comment.setContent(map.get("comments"));
+        comment.setPath(map.get("path"));
+        commentMapper.insert(comment);
     }
 }

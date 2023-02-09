@@ -50,7 +50,7 @@ class BlogApplicationTests {
 
 //        System.out.println(commentMapper.selectList(Wrappers.<Comment>query().orderByDesc("create_time")));
 
-        System.out.println(commentMapper.getCommentList("comment"));
+//        System.out.println(commentMapper.getCommentList("comment"));
     }
 
 }

@@ -10,9 +10,10 @@ import java.util.Map;
 
 @Mapper
 public interface CommentMapper extends BaseMapper<Comment> {
-    @Select("SELECT cid,from_uid,content,create_time,browser_icon,operating_system,path,browser,from_cid,reply_type,reply_id from tb_comment where reply_type=#{reply_type} order by create_time desc ")
-    public List<Comment> getCommentList(String reply_type);
+    @Select("SELECT cid,from_uid,content,create_time,browser_icon,operating_system,path,browser,from_cid,reply_type,reply_id from tb_comment where reply_type=#{reply_type}  and path=#{path} order by create_time desc ")
+    public List<Comment> getCommentList(String reply_type,String path);
 
-    @Select("select cid,from_uid,content,create_time,browser_icon,operating_system,path,browser,from_cid,reply_type,reply_id from tb_comment where reply_type=#{reply_type} and from_cid=#{from_cid} order by create_time desc  ")
+//    order by create_time desc
+    @Select("select cid,from_uid,content,create_time,browser_icon,operating_system,path,browser,from_cid,reply_type,reply_id from tb_comment where reply_type=#{reply_type} and from_cid=#{from_cid} order by create_time asc  ")
     public List<Comment> getReplyList(Map<String,String> map);
 }
