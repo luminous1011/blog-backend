@@ -17,7 +17,7 @@ import java.util.List;
 public class Comment {
     private String cid;
     private String fromUid;
-    private String toUid;
+    private String fromCid;
     private String replyType;
     private String replyId;
     private  String content;
