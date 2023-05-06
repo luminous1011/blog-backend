@@ -13,6 +13,6 @@ import java.util.Map;
 public interface InformalEssayMapper extends BaseMapper<Essay> {
 
     @Select("SELECT info_id,text,source ,create_time,update_time " +
-            "from tb_informal_essay order by info_id desc")
+            "from tb_informal_essay order by update_time desc")
     public List<Essay> getEssayList();
 }

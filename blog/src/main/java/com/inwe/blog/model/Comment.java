@@ -1,6 +1,8 @@
 package com.inwe.blog.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +17,7 @@ import java.util.List;
 @ToString
 @TableName("tb_comment")
 public class Comment {
+    @TableId(value = "cid",type = IdType.INPUT)
     private String cid;
     private String fromUid;
     private String fromCid;

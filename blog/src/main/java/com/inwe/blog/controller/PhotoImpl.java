@@ -25,6 +25,7 @@ public class PhotoImpl {
 
     @PostMapping("insert")
     public R insertPhoto(@RequestBody Photo photo){
+        System.out.println(photo);
         photo.setPhotoId(Util.getUuid());
         photo.setCreateTime(Util.getTime());
         photo.setUpdateTime(Util.getTime());

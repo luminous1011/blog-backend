@@ -1,5 +1,7 @@
 package com.inwe.blog.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,10 +14,12 @@ import lombok.ToString;
 @ToString
 @TableName("tb_photos")
 public class Photo {
+    @TableId(value = "photoId",type = IdType.INPUT)
     private String photoId;
     private String src;
     private String blankSrc;
     private Long createTime;
     private Long updateTime;
-    private String desc;
+    private Long shotTime;
+    private String des;
 }
