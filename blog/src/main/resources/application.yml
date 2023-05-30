@@ -23,7 +23,7 @@ spring:
     username: root
     password: luminous1011
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+file-save-path: C:\Users\luminous\Desktop\0430\images\
 pagehelper:
   helper-dialect: mysql
   reasonable: true

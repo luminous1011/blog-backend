@@ -25,15 +25,30 @@ public class InformalEssay {
         return R.ok().put("data", essayPageInfo) ;
     }
 
+    /**
+     * 新增
+     * @param essay
+     * @return
+     */
     @PostMapping("insertEssay")
     public R insertEssay(@RequestBody Essay essay){
-        long temp = new Date().getTime();
+        long temp = new Date().getTime(); // 获取当前时间戳
         Essay essayTemp = new Essay();
-        essayTemp.setCreateTime(temp);
-        essayTemp.setUpdateTime(temp);
+        essayTemp.setCreateTime(temp);  // 设置创建时间
+        essayTemp.setUpdateTime(temp); // 新增时 创建时间即为 -> 更新时间
+        System.out.println(essay);
+        if(essay.getSource()==null){
+            return R.error("来源不可为空！");
+        }
+        if(essay.getText()==null){
+            return R.error("内容不可为空！");
+        }
         essayTemp.setSource(essay.getSource());
         essayTemp.setText(essay.getText());
-        informalEssayMapper.insert(essayTemp);
-        return R.ok();
+        int insert = informalEssayMapper.insert(essayTemp);
+        if(insert!=1){
+            return  R.error();
+        }
+        return R.ok("新增成功！");
     }
 }

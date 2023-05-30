@@ -29,3 +29,34 @@ CREATE TABLE `tb_photos` (
                              `shot_time` LONG,
                              `desc` VARCHAR(20)
 );
+
+CREATE TABLE `tb_essay_source` (
+                                   `essay_source_id` VARCHAR(32) NOT NULL PRIMARY KEY,
+                                   `source` VARCHAR(16),
+                                   `create_time` LONG,
+                                   `update_time` LONG
+);
+
+CREATE TABLE `tb_label` (
+                            `label_id` VARCHAR(32) NOT NULL PRIMARY KEY,
+                            `label` VARCHAR(16),
+                            `create_time` LONG,
+                            `update_time` LONG
+);
+
+DROP TABLE   IF EXISTS `tb_article`;
+
+
+CREATE TABLE `tb_article` (
+                              `article_id` VARCHAR(32) NOT NULL PRIMARY KEY,
+                              `article_cover` VARCHAR(64), -- 封面
+                              `title` VARCHAR(64), -- 标题
+                              `profile` VARCHAR(255), -- 简介
+                              `comments_count` int, -- 评论数量
+                              `views_count` int, -- 浏览量
+                              `content`  VARCHAR(10800), -- 内容
+                              `label_id`  VARCHAR(32),
+                              `label_ids`  VARCHAR(100),
+                              `create_time` LONG, -- 创建时间
+                              `update_time` LONG -- 修改时间
+);

@@ -11,7 +11,7 @@ public class R extends HashMap<String,Object>{
 
     public static R ok(String msg) {
         R r = new R();
-        r.put("msg", msg);
+        r.replace("message", msg);
         return r;
     }
 
@@ -23,6 +23,19 @@ public class R extends HashMap<String,Object>{
 
     public static R ok() {
         return new R();
+    }
+
+    public static R error() {
+        R r = new R();
+        r.replace("code",1);
+        r.replace("message","error");
+        return  r;
+    }
+    public static R error(String msg) {
+        R r = new R();
+        r.replace("code",1);
+        r.replace("message",msg);
+        return  r;
     }
 
     public R put(String key, Object value) {
