@@ -23,6 +23,17 @@ spring:
     username: root
     password: luminous1011
     driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    alicloud:
+      access-key: LTAI5tAYtyzNzTa22q7sBmsA
+      secret-key: LQ1oF5LKnTVbloPyvWD6aJsuwyVv05
+      oss:
+        endpoint: sts.cn-beijing.aliyuncs.com
+
+
+
+
+
 file-save-path: C:\Users\luminous\Desktop\0430\images\
 pagehelper:
   helper-dialect: mysql
@@ -30,3 +41,19 @@ pagehelper:
   support-methods-arguments: true
   params: count=countsql
 
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-beijing.aliyuncs.com
+      keyid: LTAI5tAYtyzNzTa22q7sBmsA
+      keysecret: LQ1oF5LKnTVbloPyvWD6aJsuwyVv05
+      bucketname: luminous1011-blog
+
+mybatis:
+  #  type-aliases-package: ideal4j.robot.platform.system.*.model,ideal4j.robot.*.*.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    #返回null的属性
+    call-setters-on-nulls: true

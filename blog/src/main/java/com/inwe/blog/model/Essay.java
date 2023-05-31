@@ -18,6 +18,7 @@ public class Essay {
    private Integer  infoId;
    private String text;
    private String source;
+   private String url;
    private long createTime;
    private long updateTime;
 }

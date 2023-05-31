@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inwe.blog.mapper.EssayMapper">
+    <resultMap id="EssayResult" type="com.inwe.blog.model.Essay">
+        <result property="infoId" column="info_id"/>
+        <result property="text" column="text"/>
+        <result property="source" column="source"/>
+        <result property="url" column="url"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <delete id="deleteById"  parameterType="Integer">
+    delete from tb_informal_essay where info_id = #{id}
+    </delete>
+    <select id="getEssaysList" resultMap="EssayResult">
+        SELECT info_id,text,source ,url,create_time,update_time
+            from tb_informal_essay order by update_time desc
+    </select>
+    <insert id="insertOne" parameterType="com.inwe.blog.model.Essay">
+        insert into tb_informal_essay
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="infoId != null">info_id,</if>
+            <if test="text != null">text,</if>
+            <if test="source != null">source,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="infoId != null">#{infoId},</if>
+            <if test="text != null">#{text},</if>
+            <if test="source != null">#{source},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+        </trim>
+    </insert>
+</mapper>

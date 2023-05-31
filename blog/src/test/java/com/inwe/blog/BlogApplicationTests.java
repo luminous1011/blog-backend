@@ -1,33 +1,51 @@
 package com.inwe.blog;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
 import com.inwe.blog.dao.CommentMapper;
-import com.inwe.blog.dao.InformalEssayMapper;
-import com.inwe.blog.model.Comment;
-import com.inwe.blog.model.Essay;
-import com.inwe.blog.utlis.Util;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SpringBootTest
 class BlogApplicationTests {
+    @Value("${aliyun.oss.file.endpoint}")
+    String endpoint;
 
+    @Value("${aliyun.oss.file.keyid}")
+    String accessKeyId;
+    @Value("${aliyun.oss.file.keysecret}")
+    String accessKeySecret;
+    @Value("${aliyun.oss.file.bucketname}")
+    String bucketName;
     @Autowired
     private InformalEssayMapper informalEssayMapper;
 
     @Autowired
     CommentMapper commentMapper;
 
+    @Autowired
+    OSS ossClient;
+
+
+    @Test
+    void upload() throws FileNotFoundException{
+        String dir = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        // 创建OSSClient实例。
+        System.out.println(bucketName);
+        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+        ossClient.putObject(bucketName,dir+"3.png",new FileInputStream("C:\\Users\\luminous\\Desktop\\1.png"));
+//        ossClient.putObject("luminous1011","dev.png",
+//                new FileInputStream("C:\\Users\\luminous\\Desktop\\1.png"));
+//        System.out.println("success");
+
+    }
 
     @Test
     void contextLoads() {
