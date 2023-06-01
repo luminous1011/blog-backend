@@ -9,4 +9,8 @@ public  interface EssayMapper {
     List<Essay> getEssaysList();
 
     Integer insertOne(Essay essay);
+
+    Integer updateById(Essay essay);
+
+    Integer deleteByIds(Integer[] ids);
 }

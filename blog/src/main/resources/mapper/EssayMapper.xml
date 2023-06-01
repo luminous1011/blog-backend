@@ -24,6 +24,7 @@
             <if test="infoId != null">info_id,</if>
             <if test="text != null">text,</if>
             <if test="source != null">source,</if>
+            <if test="url != null">url,</if>
             <if test="updateTime != null">update_time,</if>
             <if test="createTime != null">create_time,</if>
         </trim>
@@ -31,8 +32,27 @@
             <if test="infoId != null">#{infoId},</if>
             <if test="text != null">#{text},</if>
             <if test="source != null">#{source},</if>
+            <if test="url != null">#{url},</if>
             <if test="updateTime != null">#{updateTime},</if>
             <if test="createTime != null">#{createTime},</if>
         </trim>
     </insert>
+
+    <update id="updateById"  parameterType="com.inwe.blog.model.Essay" >
+        update tb_informal_essay
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="text != null">text = #{text},</if>
+            <if test="source != null">source = #{source},</if>
+            <if test="url != null">url =#{url},</if>
+            <if test="updateTime != null">update_time =#{updateTime},</if>
+        </trim>
+            where info_id = #{infoId}
+    </update>
+
+    <delete id="deleteByIds" parameterType="java.lang.String">
+        delete from tb_informal_essay where info_id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

@@ -48,4 +48,15 @@ public class InformalEssay {
     public R deleteEssayById(@PathVariable("id") Integer id){
         return  essayService.deleteById(id);
     }
+    @DeleteMapping("deleteByIds")
+    public R deleteEssayById(@RequestBody HashMap<String,Object> hashMap){
+        Object ids = hashMap.get("ids");
+        Integer[] tranfer = (Integer[]) ids;
+        System.out.println(tranfer);
+        return  R.ok();
+    }
+    @PutMapping("updateById")
+    public R updateById(@RequestBody Essay essay){
+        return essayService.updateById(essay);
+    }
 }

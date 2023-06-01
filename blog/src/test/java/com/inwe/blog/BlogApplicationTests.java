@@ -24,8 +24,8 @@ class BlogApplicationTests {
     String accessKeySecret;
     @Value("${aliyun.oss.file.bucketname}")
     String bucketName;
-    @Autowired
-    private InformalEssayMapper informalEssayMapper;
+//    @Autowired
+//    private InformalEssayMapper informalEssayMapper;
 
     @Autowired
     CommentMapper commentMapper;

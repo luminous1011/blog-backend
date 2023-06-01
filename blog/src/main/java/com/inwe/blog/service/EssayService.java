@@ -10,4 +10,8 @@ public interface EssayService {
     List<Essay> getEssaysList();
 
     R insertOne(Essay essay);
+
+    R updateById(Essay essay);
+
+    R deleteByIds(Integer[] ids);
 }
