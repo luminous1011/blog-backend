@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inwe.blog.mapper.PageMapper">
+
+    <select id="getPageDataByPath" resultType="com.inwe.blog.model.Page" parameterType="string" >
+        SELECT page_id,path,name ,(select count(*) from tb_comment comment where comment.path =
+pages.page_id ) comments_count,views_count,create_time,update_time
+        from tb_pages pages where path = #{path}
+    </select>
+
+    <update id="updateViewCountById" parameterType="string">
+        update tb_pages set views_count=views_count+1 where page_id = #{pageId}
+    </update>
+
+    <update id="updateCommentCountById" parameterType="string">
+        update tb_pages set comments_count=comments_count+1 where page_id = #{id}
+    </update>
+
+</mapper>

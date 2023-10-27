@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.inwe.blog.dao.CommentMapper;
 import com.inwe.blog.dao.UserMapper;
+import com.inwe.blog.mapper.PageMapper;
 import com.inwe.blog.model.Essay;
 import com.inwe.blog.model.User;
 import com.inwe.blog.utlis.R;

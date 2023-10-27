@@ -3,6 +3,8 @@ package com.inwe.blog;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.inwe.blog.dao.CommentMapper;
+import com.inwe.blog.mapper.PageMapper;
+import com.inwe.blog.model.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +26,9 @@ class BlogApplicationTests {
     String accessKeySecret;
     @Value("${aliyun.oss.file.bucketname}")
     String bucketName;
+
+    @Autowired
+    PageMapper pageMapper;
 //    @Autowired
 //    private InformalEssayMapper informalEssayMapper;
 
@@ -32,6 +37,7 @@ class BlogApplicationTests {
 
     @Autowired
     OSS ossClient;
+
 
 
     @Test
@@ -49,6 +55,10 @@ class BlogApplicationTests {
 
     @Test
     void contextLoads() {
+//        com.inwe.blog.model.Page page1=new com.inwe.blog.model.Page();
+//        page1.setName("友链");
+//        page1.setPath("/friends");
+//        page.insertPage(page1);
 //        List<Essay> essays = informalEssayMapper.selectList(null);
 //        essays.forEach(System.out::println);
 //        QueryWrapper<Essay> wrapper= new QueryWrapper<>();

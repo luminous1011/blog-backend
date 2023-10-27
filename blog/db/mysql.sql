@@ -60,3 +60,12 @@ CREATE TABLE `tb_article` (
                               `create_time` LONG, -- 创建时间
                               `update_time` LONG -- 修改时间
 );
+CREATE TABLE `tb_pages` (
+                              `page_id` VARCHAR(32) NOT NULL PRIMARY KEY,
+                              `path` VARCHAR(128), -- 页面路径
+                              `name` VARCHAR(64), -- 页面名称
+                              `comments_count` int, -- 评论数量
+                              `views_count` int, -- 浏览量
+                              `create_time` LONG, -- 创建时间
+                              `update_time` LONG -- 修改时间
+);
