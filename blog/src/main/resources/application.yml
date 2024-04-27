@@ -29,6 +29,10 @@ spring:
       secret-key: LQ1oF5LKnTVbloPyvWD6aJsuwyVv05
       oss:
         endpoint: sts.cn-beijing.aliyuncs.com
+  # mongo
+  data:
+    mongodb:
+      uri:mongodb://47.93.60.137:27017/baizhi
 
 
 
@@ -57,3 +61,7 @@ mybatis:
     map-underscore-to-camel-case: true
     #返回null的属性
     call-setters-on-nulls: true
+
+
+
+
